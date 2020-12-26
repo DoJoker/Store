@@ -16,8 +16,9 @@ logging:
   level:
     root: INFO
 server:
-  port: 8080
-# H2
+  port: ${PORT:8080}
+
+  # H2
   #spring.h2.console.enabled=true
   #spring.h2.console.path=/h2
   # Datasource
