@@ -5,9 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Movement {
-
-    private Integer movementId;
-
+public class Discount {
     private String name;
+    private double quantity;
 }

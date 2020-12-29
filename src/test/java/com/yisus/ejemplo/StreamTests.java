@@ -1,6 +1,6 @@
 package com.yisus.ejemplo;
 
-import com.yisus.ejemplo.java8.streams;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -21,14 +21,14 @@ public class StreamTests {
 
     }
 
-    @Test
-    public void testFlatMap(){
-        streams.flatMap();
-    }
+    //@Test
+    //public void testFlatMap(){
+      //  streams.flatMap();
+    //}
 
-    @Test
-    public void testReduce(){
-        streams.reduce();
-    }
+    //@Test
+    //public void testReduce(){
+      //  streams.reduce();
+    //}
 
 }

@@ -1,9 +1,12 @@
 package com.yisus.ejemplo.service;
 
 import com.yisus.ejemplo.controller.AddOrderRequest;
-import com.yisus.ejemplo.controller.AddOrderResponse;
 import com.yisus.ejemplo.controller.UpdateOrderResponse;
+import com.yisus.ejemplo.model.Order;
+import com.yisus.ejemplo.repository.OrderRepository;
+import com.yisus.ejemplo.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,11 +14,11 @@ import java.util.List;
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
-    //private final ClientRepository repository;
+    private final OrderRepository repository;
 
-    //@Autowired
-    public OrderServiceImpl(/*ClientRepository repository*/) {
-        //this.repository = repository;
+    @Autowired
+    public OrderServiceImpl(OrderRepository repository) {
+        this.repository = repository;
     }
 
 
@@ -25,8 +28,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public AddOrderResponse addOrder(AddOrderRequest request) {
-        return null;
+    public boolean addOrder(AddOrderRequest request) {
+        log.info("addOrder request = {}", JsonUtil.toJson(request.getOrder()));
+        repository.save(request.getOrder());
+        return true;
     }
 
     @Override

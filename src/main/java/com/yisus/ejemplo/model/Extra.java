@@ -5,9 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Movement {
-
-    private Integer movementId;
-
+public class Extra {
     private String name;
+    private double quantity;
 }

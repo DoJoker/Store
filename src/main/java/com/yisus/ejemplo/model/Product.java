@@ -1,4 +1,4 @@
-package com.yisus.ejemplo.service;
+package com.yisus.ejemplo.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,5 +8,5 @@ import lombok.Setter;
 public class Product {
     private String idProduct;
     private String name;
-    private double price;
+    private double unitPrice;
 }

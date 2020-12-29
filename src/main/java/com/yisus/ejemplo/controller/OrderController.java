@@ -1,10 +1,12 @@
 package com.yisus.ejemplo.controller;
 
 import com.yisus.ejemplo.service.OrderService;
+import com.yisus.ejemplo.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -35,15 +37,16 @@ public class OrderController {
     }
 
     /**
-     *
-     * @param request
-     * @return
+     * This API register an order and information related to it. After register successfully the information
+     * sends a message of "OrderCompleted".
+     * @param request the Order Information.
+     * @return 200 status in case of successfully or 400,500 HTTP status if there was an error.
      */
     @PostMapping("/order")
-    ResponseEntity<AddOrderResponse> addOrder(@RequestBody AddOrderRequest request) {
-        log.info("POST /order request = {}", request);
-        AddOrderResponse response = orderService.addOrder(request);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    ResponseEntity<String> addOrder(@Validated @RequestBody AddOrderRequest request) {
+        log.info("POST /order request = {}", JsonUtil.toJson(request));
+        orderService.addOrder(request);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
